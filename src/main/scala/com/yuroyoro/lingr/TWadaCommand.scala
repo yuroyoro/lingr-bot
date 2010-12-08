@@ -1,7 +1,6 @@
 package com.yuroyoro.lingr
-import scala.util.Random
 
-object TWadaCommand extends Command {
+object TWadaCommand extends RandomWordCommand {
   val command:String = "t_wada"
   val usage:String = "t_wada語録"
 
@@ -51,8 +50,6 @@ http://a2.twimg.com/profile_images/421959794/TQ_LOGO_normal.png
 http://twitter.com/#!/t_wada/status/11086918180
 """
 )
-
-  def apply(commandMessage:CommandMessage):String = messages( Random.nextInt(messages.size))
 
 }
 

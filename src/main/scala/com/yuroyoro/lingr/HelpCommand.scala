@@ -4,10 +4,10 @@ object HelpCommand extends Command {
   val command:String = "help"
   val usage:String = "help表示するのん"
 
-  def apply(commandMessage:CommandMessage):String = {
+  def apply(commandMessage:CommandMessage):Option[String] = {
     val len = Bot.commands.map{ _.command.length }.max + 1
     val fmt = Bot.messagePrefix + "%-" + len + "s : %s"
-    Bot.commands.map{ c => fmt format(c.command, c.usage) }.mkString("\n")
+    Some(Bot.commands.map{ c => fmt format(c.command, c.usage) }.mkString("\n"))
   }
 }
 

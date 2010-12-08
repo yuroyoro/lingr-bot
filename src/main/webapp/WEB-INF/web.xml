@@ -5,8 +5,25 @@
     <filter-name>frontController</filter-name>
     <filter-class>com.yuroyoro.lingr.LingrBotFilter</filter-class>
   </filter>
+  <filter>
+    <filter-name>bijinFilter</filter-name>
+    <filter-class>com.yuroyoro.lingr.BijinTokeiFilter</filter-class>
+  </filter>
+  <filter>
+    <filter-name>bijoFilter</filter-name>
+    <filter-class>com.yuroyoro.lingr.BijoKoyomiFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>bijinFilter</filter-name>
+    <url-pattern>/bijin/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>bijoFilter</filter-name>
+    <url-pattern>/bijo/*</url-pattern>
+  </filter-mapping>
   <filter-mapping>
     <filter-name>frontController</filter-name>
-    <url-pattern>/*</url-pattern>
+    <url-pattern>/command/*</url-pattern>
   </filter-mapping>
 </web-app>

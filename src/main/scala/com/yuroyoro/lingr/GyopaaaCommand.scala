@@ -64,7 +64,7 @@ object GyopaaaCommand extends Command {
   val command:String = "gyopaa"
   val usage:String = "<length> 奇声を発する。lengthで文章の長さ指定(max 10)。"
 
-  def apply(commandMessage:CommandMessage):String = {
+  def apply(commandMessage:CommandMessage):Option[String] = {
     commandMessage.args.headOption.flatMap{ cnt =>
       import scala.util.control.Exception._
       allCatch.opt{ cnt.toInt }
@@ -72,7 +72,7 @@ object GyopaaaCommand extends Command {
       ( 1 to Seq(10, cnt).min).map{ n =>
          ( 1 to ( 1 + Random.nextInt(3))).map{ m => markov.generate }.mkString
        }.mkString("\n")
-    }.getOrElse("")
+    }
   }
 }
 

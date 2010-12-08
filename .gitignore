@@ -1,2 +1,5 @@
 lib
+src/main/resources/accesstoken.properties
+src/main/resources/consumer.properties
+target
 war/WEB-INF/classes/*
