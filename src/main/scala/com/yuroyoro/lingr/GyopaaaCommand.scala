@@ -71,7 +71,7 @@ object GyopaaaCommand extends Command {
     }.orElse(Some(3)).map{ cnt =>
       ( 1 to Seq(10, cnt).min).map{ n =>
          ( 1 to ( 1 + Random.nextInt(3))).map{ m => markov.generate }.mkString
-       }.mkString("\n")
+       }.mkString
     }
   }
 }

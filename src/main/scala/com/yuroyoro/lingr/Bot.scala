@@ -29,6 +29,8 @@ object Bot {
     EnochCommand,
     LucifelCommand,
     PingCommand,
+    BrainFuckCommand,
+    DioCommand,
     BijinTokeiCommand,
     BijoKoyomiCommand
   )
@@ -44,7 +46,18 @@ object Bot {
 
       commands.filter{ c =>
         c.matchCommand_?(commandMessage)
-      }.flatMap{ c => c(commandMessage)}
+      }.flatMap{ c =>
+        import scala.util.control.Exception._
+        allCatch.either{ c(commandMessage) }.fold(
+          { ex => {
+             import java.io.{ByteArrayOutputStream, PrintStream}
+             val bo = new ByteArrayOutputStream
+             val ps = new PrintStream(bo)
+             ex.printStackTrace(ps)
+             Some(bo.toString)
+           }},
+          { rv => rv } )
+      }
     }
   }
 }
@@ -64,6 +77,13 @@ trait RandomWordCommand extends Command {
 
   def apply(commandMessage:CommandMessage):Option[String] =
     Some(messages( Random.nextInt(messages.size)))
+}
+
+trait RandomFunctionCommand extends Command {
+  val functions:Seq[CommandMessage => Option[String]]
+
+  def apply(commandMessage:CommandMessage):Option[String] =
+    functions( Random.nextInt(functions.size))(commandMessage)
 }
 
 trait Crawler {

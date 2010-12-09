@@ -23,10 +23,10 @@ class LingrBotFilter extends Filter {
     res.setContentType("text/plain")
     res.setCharacterEncoding("UTF-8")
 
-    val testdata = URLEncoder.encode("""{"status":"ok", "counter":2320356, "events":[{"message":{"id":"1216064", "room":"yuroyoro_test", "public_session_id":"KpQ9lM", "icon_url":"http://www.gravatar.com/avatar/bd3590aaffe8948079d27795cb6f7388.jpg", "type":"user", "speaker_id":"yuroyoro", "nickname":"ゆろよろ", "text":"&ping yuroyoro ", "timestamp":"2010-12-07T10:35:58Z", "local_id":"pending-KpQ9lM-13"}, "event_id":2320356}]}""", "utf-8")
+    // val testdata = URLEncoder.encode("""{"status":"ok", "counter":2320356, "events":[{"message":{"id":"1216064", "room":"yuroyoro_test", "public_session_id":"KpQ9lM", "icon_url":"http://www.gravatar.com/avatar/bd3590aaffe8948079d27795cb6f7388.jpg", "type":"user", "speaker_id":"yuroyoro", "nickname":"ゆろよろ", "text":"&bf >+>]", "timestamp":"2010-12-07T10:35:58Z", "local_id":"pending-KpQ9lM-13"}, "event_id":2320356}]}""", "utf-8")
 
-    body.split("json=").lastOption.filter{ _.trim.nonEmpty }.orElse(Option(req.getParameter("json"))).orElse(Some(testdata)).map{ s =>
-    // body.split("json=").lastOption.filter{ _.trim.nonEmpty }.map{ s =>
+    // body.split("json=").lastOption.filter{ _.trim.nonEmpty }.orElse(Option(req.getParameter("json"))).orElse(Some(testdata)).map{ s =>
+    body.split("json=").lastOption.filter{ _.trim.nonEmpty }.map{ s =>
       URLDecoder.decode(s, "utf-8")
     }.foreach{ s =>
       JSON.parse(s).foreach{ json => json.collect {
