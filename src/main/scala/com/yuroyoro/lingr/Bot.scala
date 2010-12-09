@@ -32,7 +32,8 @@ object Bot {
     BrainFuckCommand,
     DioCommand,
     BijinTokeiCommand,
-    BijoKoyomiCommand
+    BijoKoyomiCommand,
+    OppaichanCommand
   )
 
   def apply(message:Message):Seq[String] = {

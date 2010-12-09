@@ -15,11 +15,11 @@ class BijinTokeiFilter extends Filter {
     val req = request.asInstanceOf[HttpServletRequest]
     val res = response.asInstanceOf[HttpServletResponse]
 
-    val fname = req.getRequestURI.split("/").last
-    val url = "http://bijint.com/jp/img/clk/%s".format( fname )
+    val fname::area::info  = req.getRequestURI.split("/").reverse.toList
+    val url = "http://www.bijint.com/%s/tokei_images/%s".format( area, fname )
 
     val urlConn = new URL(url).openConnection.asInstanceOf[HttpURLConnection]
-    urlConn.addRequestProperty("REFERER","http://bijint.com/jp/")
+    urlConn.addRequestProperty("REFERER","http://www.bijint.com/%s/" format area)
     urlConn.connect
 
     val in = urlConn.getInputStream
