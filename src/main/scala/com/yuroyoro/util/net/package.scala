@@ -53,6 +53,7 @@ package object net {
       encodedQueryStrings( params.toList : _* )(spec)
     def toEncodedMap( implicit spec:URLEncodingSpec ) =
       params.map{ case (k, v) => (encodeURL(k.toString)(spec), encodeURL(v.toString)(spec) ) }
+
   }
 }
 

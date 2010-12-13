@@ -29,6 +29,7 @@ package object util {
 
   implicit def option2OptionEx[A]( o:Option[A] ) = new OptionEx( o )
 
+  tryo{ "1".toInt }.map{ n => n * 2 }.getOrElse(-1)
   def tryo[T]( f: => T )
              ( implicit onError: Throwable => Option[T] =
                { t:Throwable => None }): Option[T] =

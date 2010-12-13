@@ -19,7 +19,7 @@ object DioCommand extends RandomFunctionCommand {
     { cm => "「%s貧弱%s%s」" format(
         gen("貧弱！", 3), gen("ゥ", 3), gen("！", 5))},
     { cm => "「%sＲ%s%s」" format(
-        choice("ｗ", "Ｕ"), gen("Ｙ"), gen("！", 5))},
+        choice("Ｗ", "Ｕ"), gen("Ｙ"), gen("！", 5))},
     { cm => "「ロードローラーだッ！」" },
     { cm => "「最高に『ハイ！』ってやつだアアアアア！アハハハハハハハハハーッ！！」" },
     { cm => "「おまえは今まで食ったパンの枚数を覚えているのか？」" },
